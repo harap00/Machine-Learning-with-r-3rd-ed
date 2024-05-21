@@ -1,0 +1,2574 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Divide-and-conquer - Classification based on decision trees and divide-and-conquer rules},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Divide-and-conquer - Classification based on decision trees and
+divide-and-conquer rules}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\section{第５章}\label{ux7b2cuxff15ux7ae0}
+
+\section{　分割統治
+―決定木と分割ルールに基づく分類}\label{ux5206ux5272ux7d71ux6cbb-ux6c7aux5b9aux6728ux3068ux5206ux5272ux30ebux30fcux30ebux306bux57faux3065ux304fux5206ux985e}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\item
+  決定木と分割ルールがデータを重要なセグメントに「貪欲に」分割する仕組み
+\item
+  C5.0、IR、RIPPERなど最もよく使われている決定木と分割ルール学習機
+\item
+  危険な融資や毒キノコの識別など、現実的な分類タスクでのこれらのアルゴリズムの使い方
+\end{itemize}
+
+\section{5.1
+決定木を理解する}\label{ux6c7aux5b9aux6728ux3092ux7406ux89e3ux3059ux308b}
+
+　決定木アルゴリズムの大きな利点は、このフローチャートのような木構造の用途が学習器に限られないことである。多くの決定木アルゴリズムでは、モデルの出力は人が読める形式の（ヒューマンリーダブルな）構造である。この出力から、このモデルが特定のタスクでどれくらいうまくいくか、うなくいかないとしたらそれはなぜかについてのヒントが得られる。
+
+\begin{itemize}
+\item
+  \textbf{格付けモデル}\\
+  申請を却下する基準を明確に文章化し、偏見を排除する
+\item
+  \textbf{顧客行動に関する市場調査}\\
+  経営陣や広告代理店度満足度や解約率などを共有する
+\item
+  \textbf{疾患の診断}\\
+  臨床検査、症状、疾患進行率などに基づいて疾患を診断する
+\end{itemize}
+
+\subsubsection{5.1.1　分割統治}\label{ux5206ux5272ux7d71ux6cbb}
+
+　決定木アルゴリズムは、データを分割統治するために各枝をたどっていき、どのつど新しい決定ノードを作成するのに最適な特徴量を選択する。そして、終了時条件が満たされるまで、このプロセスを繰り返す。分割統治が終了するのは、次のいずれかの条件が満たされたときである。
+
+\begin{itemize}
+\item
+  そのノードのすべて（またはほぼすべて）のインスタンスが同じクラスに所属している
+\item
+  インスタンスを識別するための特徴量が残っていない
+\item
+  決定木が事前に定義した最大サイズに達している
+\end{itemize}
+
+\subsubsection{5.1.2　C5.0アルゴリズム}\label{c5.0ux30a2ux30ebux30b4ux30eaux30baux30e0}
+
+　C5.0アルゴリズムは、ほとんどのしゅるいでの問題にそのまま適用できるため、決定木を生成するための業界標準となっている。C5.0で構築した決定木の性能は、より高度なが機械学習モデルとほぼ同じであり、しかも理解したりデプロイしたりするのがずっと容易である。それに加えて、次の表に示すように、このアグ後リズムの短所はそれほど重大なものではなく、大部分は回避できる。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4848}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5152}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+長所
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+短所
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\item
+  様々な種類の問題にうまく対処する汎用\\
+  分類器
+\item
+  高度に自動化された学習プロセス。数値特徴\\
+  量や名義特徴量だけでなく欠損値にも対処で\\
+  きる
+\item
+  重要度の低い特徴量を除外
+\item
+  小規模なデータセットでも大規模なデータ\\
+  セットでも利用できる
+\item
+  数学的な知識がなくても解釈できるモデルが\\
+  得られる（比較的小さい決定木の場合）
+\item
+  他の複雑なモデルよりも効率的
+\end{itemize}\strut
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  レベルの数が多い特徴量基づいて分割を行\\
+  うようにバイアスがかかりがち
+\item
+  モデルが過学習または学習不足に陥りやすい
+\item
+  軸に平行な分割に依存するため、関係をうま\\
+  くモデル化できないことがある
+\item
+  訓練データの小さな変化によって決定ロジッ\\
+  クが大きく変化することがある
+\item
+  大規模な決定木は解釈が難しいことがあり、\\
+  直感に反する決定を行うように見えることがある
+\end{itemize}\strut
+\end{minipage} \\
+\end{longtable}
+
+\paragraph{最適な分割を選択する}\label{ux6700ux9069ux306aux5206ux5272ux3092ux9078ux629eux3059ux308b}
+
+　インスタンスのグループが１つのクラスのみに所属している度合いを\textbf{純度}（purity）と呼ぶ。C5.0は\textbf{エントロピー}（entropy）を使っている。\\
+　一般にエントロピーは\textbf{ビット}（bit）で表される。クラスが２つしかない場合、エントロピーは０から１の範囲の値となる。クラスがｎ個の場合は、０から\(log2(n)\)の範囲の値になる。どの場合も、最小値はインスタンスが完全に欽一であることを表し、最大値はデータが可能な限り多様で、どのグループにもほんの僅かな純度すら認められないことを意味する。
+
+\[
+\begin{aligned} 
+Entropy(S) &= \sum_{i=1}^{c}{-p_i\log_2{(p_i)}}\\
+\\
+(S) &: データセグメント\\
+c &: クラスのレベルの個数\\
+p_i &: クラスレベルiに分類される値の割合
+\end{aligned}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{{-}}\FloatTok{0.6} \SpecialCharTok{*} \FunctionTok{log2}\NormalTok{(}\FloatTok{0.60}\NormalTok{) }\SpecialCharTok{{-}} \FloatTok{0.40} \SpecialCharTok{*} \FunctionTok{log2}\NormalTok{(}\FloatTok{0.40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9709506
+\end{verbatim}
+
+　クラスが２つの場合に考えられるすべてのパターンのエントロピーを可視化してみる。一方のクラスに分類され得るインスタンスの割合を\(x\)とすれば、もう一方のクラスに分類されるインスタンスの割合は\((x-1)\)である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{curve}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x }\SpecialCharTok{*} \FunctionTok{log2}\NormalTok{(x) }\SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ x) }\SpecialCharTok{*} \FunctionTok{log2}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ x), }
+      \AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }
+      \AttributeTok{xlab =} \StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, }
+      \AttributeTok{ylab =} \StringTok{\textquotesingle{}Entropy\textquotesingle{}}\NormalTok{, }
+      \AttributeTok{lwd =}\DecValTok{4}\NormalTok{,}
+      \AttributeTok{main =} \StringTok{\textquotesingle{}データが一方のクラスに分類される割合に対するエントロピー\textquotesingle{}}
+\NormalTok{      )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <87>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <bc>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <bf>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <81>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <8c>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e4>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <b8>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <80>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e6>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <96>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <b9>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <81>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <ae>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <af>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <a9>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <b9>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <81>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <ab>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e5>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <88>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <86>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e9>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <a1>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <9e>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <81>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <95>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <8c>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <8b>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e5>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <89>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <b2>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e5>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <90>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <88>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <81>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <ab>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e5>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <af>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <be>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <81>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <99>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <8b>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <82>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <a8>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <b3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <88>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <ad>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <94>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <e3>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <83>
+## をドットで置き換えました
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): 'mbcsToSbcs' 中の
+## 'データが一方のクラスに分類される割合に対するエントロピー' で変換に失敗: <bc>
+## をドットで置き換えました
+\end{verbatim}
+
+\includegraphics{5_Divide-and-conquer---Classification-based-on-decision-trees-and-divide-and-conquer-rules_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+情報利得\(IG\)は分割前のセグメント\((S_1)\)と分割後のセグメント\((S_2)\)でのエントロピーの差として計算する。\\
+\[
+IG(F)=Entropy(S_1)-Entropy(S_2)
+\]
+
+複数回階層的に分割が発生するので、全体のエントロピーは次のようなものとなる。
+
+\[
+Entropy(S)=\sum_{i=1}^{n}w_iEntropy(P_i)
+\]
+
+\paragraph{決定木を選定する}\label{ux6c7aux5b9aux6728ux3092ux9078ux5b9aux3059ux308b}
+
+　過学習を防ぐために\textbf{早期終了}（early
+stopping）することを、決定木の\textbf{選定}（pruning）と呼ぶ。しかし、決定木をもっと大きなサイズに成長させていれば、微細ながら重要なパターンを学習していたかもしれない。このアプローチには、そうしたパターンを見逃したかどうかを知るすべがない。
+
+　これに変わる\textbf{事後剪定}（post-pruning）という手法では、決定木をわざと大きすぎるサイズに成長させ、より適切なサイズになるように葉ノードを刈り込む。多くの場合、事後剪定は事前剪定よりも効果的なアプローチとなる。
+
+　C5.0
+アルゴリズムの利点の１つは、剪定について［極めて妥当なデフォルト設定を使って決定の多くを自動的に処理する］ことをしている。訓練データを過学習するサイズに決定木を成長させた後、分類誤差にほとんど影響を与えないノードや枝を刈り込む。場合によっては、分類誤差を減らすために枝全体を決定木の上の方に移動したり、より単純な決定に置き換えたりする。このような接ぎ木のプロセスを\textbf{部分技の腹接ぎまたは高接ぎ}（subtree
+raising）、\textbf{部分木の置換}（subtree replacement）と呼ぶ。
+
+\subsection{5.2
+例：C5.0の決定木を使ってあぶない融資を特定する}\label{ux4f8bc5.0ux306eux6c7aux5b9aux6728ux3092ux4f7fux3063ux3066ux3042ux3076ux306aux3044ux878dux8cc7ux3092ux7279ux5b9aux3059ux308b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!} \FunctionTok{require}\NormalTok{(tidyverse))\{}
+    \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{, }\AttributeTok{quiet =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{ステップ１：データを収集する}\label{ux30b9ux30c6ux30c3ux30d7uxff11ux30c7ux30fcux30bfux3092ux53ceux96c6ux3059ux308b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://raw.githubusercontent.com/dataspelunking/MLwR/master/Machine\%20Learning\%20with\%20R\%20(3rd\%20Ed.)/Chapter05/credit.csv\textquotesingle{}}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{ステップ２：データの調査と前処理}\label{ux30b9ux30c6ux30c3ux30d7uxff12ux30c7ux30fcux30bfux306eux8abfux67fbux3068ux524dux51e6ux7406}
+
+最初の数行を確認する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(credit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    1000 obs. of  17 variables:
+##  $ checking_balance    : Factor w/ 4 levels "< 0 DM","> 200 DM",..: 1 3 4 1 1 4 4 3 4 3 ...
+##  $ months_loan_duration: int  6 48 12 42 24 36 24 36 12 30 ...
+##  $ credit_history      : Factor w/ 5 levels "critical","good",..: 1 2 1 2 4 2 2 2 2 1 ...
+##  $ purpose             : Factor w/ 6 levels "business","car",..: 5 5 4 5 2 4 5 2 5 2 ...
+##  $ amount              : int  1169 5951 2096 7882 4870 9055 2835 6948 3059 5234 ...
+##  $ savings_balance     : Factor w/ 5 levels "< 100 DM","> 1000 DM",..: 5 1 1 1 1 5 4 1 2 1 ...
+##  $ employment_duration : Factor w/ 5 levels "< 1 year","> 7 years",..: 2 3 4 4 3 3 2 3 4 5 ...
+##  $ percent_of_income   : int  4 2 2 2 3 2 3 2 2 4 ...
+##  $ years_at_residence  : int  4 2 3 4 4 4 4 2 4 2 ...
+##  $ age                 : int  67 22 49 45 53 35 53 35 61 28 ...
+##  $ other_credit        : Factor w/ 3 levels "bank","none",..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ housing             : Factor w/ 3 levels "other","own",..: 2 2 2 1 1 1 2 3 2 2 ...
+##  $ existing_loans_count: int  2 1 1 1 2 1 1 1 1 2 ...
+##  $ job                 : Factor w/ 4 levels "management","skilled",..: 2 2 4 2 2 4 2 1 4 1 ...
+##  $ dependents          : int  1 1 2 2 2 2 1 1 1 1 ...
+##  $ phone               : Factor w/ 2 levels "no","yes": 2 1 1 1 1 2 1 2 1 1 ...
+##  $ default             : Factor w/ 2 levels "no","yes": 1 2 1 1 2 1 1 1 1 2 ...
+\end{verbatim}
+
+　1,000この観測値があり17の特徴量で構成されている。
+
+融資の焦げ付きを予測するのに使えそうな特徴量は２つ
+
+\begin{itemize}
+\tightlist
+\item
+  当座預金口座の残高（checking\_balance）
+\item
+  普通預金口座の残高（savings\_balance）
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(credit}\SpecialCharTok{$}\NormalTok{checking\_balance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##     < 0 DM   > 200 DM 1 - 200 DM    unknown 
+##        274         63        269        394
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(credit}\SpecialCharTok{$}\NormalTok{savings\_balance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##      < 100 DM     > 1000 DM  100 - 500 DM 500 - 1000 DM       unknown 
+##           603            48           103            63           183
+\end{verbatim}
+
+　なお、この融資データはユーロ導入前のドイツで収集されたデータであるため、通貨はドイツマルク（DM）である。
+
+　このデータには、返済期間（months\_loan\_duration）や融資額（amount）といった数値の特徴量も含まれている。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(credit}\SpecialCharTok{$}\NormalTok{months\_loan\_duration)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     4.0    12.0    18.0    20.9    24.0    72.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(credit}\SpecialCharTok{$}\NormalTok{amount)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     250    1366    2320    3271    3972   18424
+\end{verbatim}
+
+　融資額は250マルクから18,424マルク、返済期間は4か月から72か月であり、中央値はそれぞれ2,320マルクと18か月となっている。
+
+　defaultは、借り手が返済期間を守れなかった、あるいは返済不能になったかを示す。このデータセットでは融資の30％が焦げ付いている。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(credit}\SpecialCharTok{$}\NormalTok{default)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  no yes 
+## 700 300
+\end{verbatim}
+
+\paragraph{データの前処理：訓練データセットとテストデータセットをランダムに作成する}\label{ux30c7ux30fcux30bfux306eux524dux51e6ux7406ux8a13ux7df4ux30c7ux30fcux30bfux30bbux30c3ux30c8ux3068ux30c6ux30b9ux30c8ux30c7ux30fcux30bfux30bbux30c3ux30c8ux3092ux30e9ux30f3ux30c0ux30e0ux306bux4f5cux6210ux3059ux308b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ランダム数列の生成}
+\FunctionTok{RNGversion}\NormalTok{(}\StringTok{\textquotesingle{}3.5.2\textquotesingle{}}\NormalTok{); }\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in RNGkind("Mersenne-Twister", "Inversion", "Rounding"): non-uniform
+## 'Rounding' sampler used
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train\_sample }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\DecValTok{900}\NormalTok{)}
+
+\CommentTok{\# 数列の確認（一部）}
+\FunctionTok{str}\NormalTok{(train\_sample)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  int [1:900] 288 788 409 881 937 46 525 887 548 453 ...
+\end{verbatim}
+
+　教師データと検証データにデータを分割する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_train }\OtherTok{\textless{}{-}}\NormalTok{ credit[train\_sample, ]}
+\NormalTok{credit\_test }\OtherTok{\textless{}{-}}\NormalTok{ credit[}\SpecialCharTok{{-}}\NormalTok{train\_sample, ]}
+\end{Highlighting}
+\end{Shaded}
+
+　大きな偏りがないか、分割結果を確認する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_train}\SpecialCharTok{$}\NormalTok{default }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{prop.table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## .
+##        no       yes 
+## 0.7033333 0.2966667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_test}\SpecialCharTok{$}\NormalTok{default }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{prop.table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## .
+##   no  yes 
+## 0.67 0.33
+\end{verbatim}
+
+\subsubsection{ステップ３：モデルを訓練する}\label{ux30b9ux30c6ux30c3ux30d7uxff13ux30e2ux30c7ux30ebux3092ux8a13ux7df4ux3059ux308b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!} \FunctionTok{require}\NormalTok{(C50))\{}
+    \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}C50\textquotesingle{}}\NormalTok{, }\AttributeTok{quiet =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  要求されたパッケージ C50 をロード中です
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(C50)}
+\end{Highlighting}
+\end{Shaded}
+
+C5.0ライブラリを訓練する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_model }\OtherTok{\textless{}{-}} \FunctionTok{C5.0}\NormalTok{(credit\_train }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{ default), credit\_train}\SpecialCharTok{$}\NormalTok{default)}
+\NormalTok{credit\_model}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## C5.0.default(x = credit_train %>% select(-default), y = credit_train$default)
+## 
+## Classification Tree
+## Number of samples: 900 
+## Number of predictors: 16 
+## 
+## Tree size: 57 
+## 
+## Non-standard options: attempt to group attributes
+\end{verbatim}
+
+　決定木が行った決定を確認する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(credit\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## C5.0.default(x = credit_train %>% select(-default), y = credit_train$default)
+## 
+## 
+## C5.0 [Release 2.07 GPL Edition]      Mon May 13 00:08:57 2024
+## -------------------------------
+## 
+## Class specified by attribute `outcome'
+## 
+## Read 900 cases (17 attributes) from undefined.data
+## 
+## Decision tree:
+## 
+## checking_balance in {> 200 DM,unknown}: no (412/50)
+## checking_balance in {< 0 DM,1 - 200 DM}:
+## :...credit_history in {perfect,very good}: yes (59/18)
+##     credit_history in {critical,good,poor}:
+##     :...months_loan_duration <= 22:
+##         :...credit_history = critical: no (72/14)
+##         :   credit_history = poor:
+##         :   :...dependents > 1: no (5)
+##         :   :   dependents <= 1:
+##         :   :   :...years_at_residence <= 3: yes (4/1)
+##         :   :       years_at_residence > 3: no (5/1)
+##         :   credit_history = good:
+##         :   :...savings_balance in {> 1000 DM,500 - 1000 DM}: no (15/1)
+##         :       savings_balance = 100 - 500 DM:
+##         :       :...other_credit = bank: yes (3)
+##         :       :   other_credit in {none,store}: no (9/2)
+##         :       savings_balance = unknown:
+##         :       :...other_credit = bank: yes (1)
+##         :       :   other_credit in {none,store}: no (21/8)
+##         :       savings_balance = < 100 DM:
+##         :       :...purpose in {business,car0,renovations}: no (8/2)
+##         :           purpose = education:
+##         :           :...checking_balance = < 0 DM: yes (4)
+##         :           :   checking_balance = 1 - 200 DM: no (1)
+##         :           purpose = car:
+##         :           :...employment_duration = > 7 years: yes (5)
+##         :           :   employment_duration = unemployed: no (4/1)
+##         :           :   employment_duration = < 1 year:
+##         :           :   :...years_at_residence <= 2: yes (5)
+##         :           :   :   years_at_residence > 2: no (3/1)
+##         :           :   employment_duration = 1 - 4 years:
+##         :           :   :...years_at_residence <= 2: yes (2)
+##         :           :   :   years_at_residence > 2: no (6/1)
+##         :           :   employment_duration = 4 - 7 years:
+##         :           :   :...amount <= 1680: yes (2)
+##         :           :       amount > 1680: no (3)
+##         :           purpose = furniture/appliances:
+##         :           :...job in {management,unskilled}: no (23/3)
+##         :               job = unemployed: yes (1)
+##         :               job = skilled:
+##         :               :...months_loan_duration > 13: [S1]
+##         :                   months_loan_duration <= 13:
+##         :                   :...housing in {other,own}: no (23/4)
+##         :                       housing = rent:
+##         :                       :...percent_of_income <= 3: yes (3)
+##         :                           percent_of_income > 3: no (2)
+##         months_loan_duration > 22:
+##         :...savings_balance = > 1000 DM: no (2)
+##             savings_balance = 500 - 1000 DM: yes (4/1)
+##             savings_balance = 100 - 500 DM:
+##             :...credit_history in {critical,poor}: no (14/3)
+##             :   credit_history = good:
+##             :   :...other_credit = bank: no (1)
+##             :       other_credit in {none,store}: yes (12/2)
+##             savings_balance = unknown:
+##             :...checking_balance = 1 - 200 DM: no (17)
+##             :   checking_balance = < 0 DM:
+##             :   :...credit_history = critical: no (1)
+##             :       credit_history in {good,poor}: yes (12/3)
+##             savings_balance = < 100 DM:
+##             :...months_loan_duration > 47: yes (21/2)
+##                 months_loan_duration <= 47:
+##                 :...housing = other:
+##                     :...percent_of_income <= 2: no (6)
+##                     :   percent_of_income > 2: yes (9/3)
+##                     housing = rent:
+##                     :...other_credit = bank: no (1)
+##                     :   other_credit in {none,store}: yes (16/3)
+##                     housing = own:
+##                     :...employment_duration = > 7 years: no (13/4)
+##                         employment_duration = 4 - 7 years:
+##                         :...job in {management,skilled,
+##                         :   :       unemployed}: yes (9/1)
+##                         :   job = unskilled: no (1)
+##                         employment_duration = unemployed:
+##                         :...years_at_residence <= 2: yes (4)
+##                         :   years_at_residence > 2: no (3)
+##                         employment_duration = 1 - 4 years:
+##                         :...purpose in {business,car0,education}: yes (7/1)
+##                         :   purpose in {furniture/appliances,
+##                         :   :           renovations}: no (7)
+##                         :   purpose = car:
+##                         :   :...years_at_residence <= 3: yes (3)
+##                         :       years_at_residence > 3: no (3)
+##                         employment_duration = < 1 year:
+##                         :...years_at_residence > 3: yes (5)
+##                             years_at_residence <= 3:
+##                             :...other_credit = bank: no (0)
+##                                 other_credit = store: yes (1)
+##                                 other_credit = none:
+##                                 :...checking_balance = 1 - 200 DM: no (8/2)
+##                                     checking_balance = < 0 DM:
+##                                     :...job in {management,skilled,
+##                                         :       unemployed}: yes (2)
+##                                         job = unskilled: no (3/1)
+## 
+## SubTree [S1]
+## 
+## employment_duration in {< 1 year,4 - 7 years}: no (4)
+## employment_duration in {> 7 years,1 - 4 years,unemployed}: yes (10)
+## 
+## 
+## Evaluation on training data (900 cases):
+## 
+##      Decision Tree   
+##    ----------------  
+##    Size      Errors  
+## 
+##      56  133(14.8%)   <<
+## 
+## 
+##     (a)   (b)    <-classified as
+##    ----  ----
+##     598    35    (a): class no
+##      98   169    (b): class yes
+## 
+## 
+##  Attribute usage:
+## 
+##  100.00% checking_balance
+##   54.22% credit_history
+##   47.67% months_loan_duration
+##   38.11% savings_balance
+##   14.33% purpose
+##   14.33% housing
+##   12.56% employment_duration
+##    9.00% job
+##    8.67% other_credit
+##    6.33% years_at_residence
+##    2.22% percent_of_income
+##    1.56% dependents
+##    0.56% amount
+## 
+## 
+## Time: 0.0 secs
+\end{verbatim}
+
+　この学習では900個の訓練データのうち、133個を除くっデータが正しく分類され、誤分類率が14.8\%であることを示している。合計で35個のデータがyesと誤分類（偽陽性）されており、98個のデータがnoと誤分類（偽陰性）されている。
+
+\subsubsection{ステップ４：モデルの性能を評価する}\label{ux30b9ux30c6ux30c3ux30d7uxff14ux30e2ux30c7ux30ebux306eux6027ux80fdux3092ux8a55ux4fa1ux3059ux308b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!} \FunctionTok{require}\NormalTok{(gmodels))\{}
+    \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}gmodels\textquotesingle{}}\NormalTok{, }\AttributeTok{quiet =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}gmodels\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(credit\_model, credit\_test)}
+
+\FunctionTok{CrossTable}\NormalTok{(credit\_test}\SpecialCharTok{$}\NormalTok{default,}
+\NormalTok{           credit\_pred,}
+           \AttributeTok{prop.chisq =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{prop.c =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{prop.r =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{dnn =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}actual default\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}predicted default\textquotesingle{}}\NormalTok{)}
+\NormalTok{           )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  100 
+## 
+##  
+##                | predicted default 
+## actual default |        no |       yes | Row Total | 
+## ---------------|-----------|-----------|-----------|
+##             no |        59 |         8 |        67 | 
+##                |     0.590 |     0.080 |           | 
+## ---------------|-----------|-----------|-----------|
+##            yes |        19 |        14 |        33 | 
+##                |     0.190 |     0.140 |           | 
+## ---------------|-----------|-----------|-----------|
+##   Column Total |        78 |        22 |       100 | 
+## ---------------|-----------|-----------|-----------|
+## 
+## 
+\end{verbatim}
+
+　テストデータの予測結果の正解率（Accuracy）は73\%だが、適合率（Precision）は42％にとどまる。焦げ付く融資の半分以上を見逃してしまっている。
+
+\subsubsection{ステップ５：モデルの性能を向上させる}\label{ux30b9ux30c6ux30c3ux30d7uxff15ux30e2ux30c7ux30ebux306eux6027ux80fdux3092ux5411ux4e0aux3055ux305bux308b}
+
+　C5.0に実装されているアダブーストの機能を利用する。アダブーストは、多くの決定木を構築し、各インスタンスにとって最良と思えるクラスに投票させるプロセス。「単純な学習器（弱学習器）」をいくつか組み合わせることで、予測性能を向上させる。
+
+\paragraph{決定木の正解率を向上させる}\label{ux6c7aux5b9aux6728ux306eux6b63ux89e3ux7387ux3092ux5411ux4e0aux3055ux305bux308b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_boost10 }\OtherTok{\textless{}{-}} \FunctionTok{C5.0}\NormalTok{(credit\_train }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{default), credit\_train}\SpecialCharTok{$}\NormalTok{default, }\AttributeTok{trials =} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{credit\_boost10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## C5.0.default(x = credit_train %>% select(-default), y =
+##  credit_train$default, trials = 10)
+## 
+## Classification Tree
+## Number of samples: 900 
+## Number of predictors: 16 
+## 
+## Number of boosting iterations: 10 
+## Average tree size: 47.5 
+## 
+## Non-standard options: attempt to group attributes
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(credit\_boost10)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## C5.0.default(x = credit_train %>% select(-default), y =
+##  credit_train$default, trials = 10)
+## 
+## 
+## C5.0 [Release 2.07 GPL Edition]      Mon May 13 00:08:58 2024
+## -------------------------------
+## 
+## Class specified by attribute `outcome'
+## 
+## Read 900 cases (17 attributes) from undefined.data
+## 
+## -----  Trial 0:  -----
+## 
+## Decision tree:
+## 
+## checking_balance in {> 200 DM,unknown}: no (412/50)
+## checking_balance in {< 0 DM,1 - 200 DM}:
+## :...credit_history in {perfect,very good}: yes (59/18)
+##     credit_history in {critical,good,poor}:
+##     :...months_loan_duration <= 22:
+##         :...credit_history = critical: no (72/14)
+##         :   credit_history = poor:
+##         :   :...dependents > 1: no (5)
+##         :   :   dependents <= 1:
+##         :   :   :...years_at_residence <= 3: yes (4/1)
+##         :   :       years_at_residence > 3: no (5/1)
+##         :   credit_history = good:
+##         :   :...savings_balance in {> 1000 DM,500 - 1000 DM}: no (15/1)
+##         :       savings_balance = 100 - 500 DM:
+##         :       :...other_credit = bank: yes (3)
+##         :       :   other_credit in {none,store}: no (9/2)
+##         :       savings_balance = unknown:
+##         :       :...other_credit = bank: yes (1)
+##         :       :   other_credit in {none,store}: no (21/8)
+##         :       savings_balance = < 100 DM:
+##         :       :...purpose in {business,car0,renovations}: no (8/2)
+##         :           purpose = education:
+##         :           :...checking_balance = < 0 DM: yes (4)
+##         :           :   checking_balance = 1 - 200 DM: no (1)
+##         :           purpose = car:
+##         :           :...employment_duration = > 7 years: yes (5)
+##         :           :   employment_duration = unemployed: no (4/1)
+##         :           :   employment_duration = < 1 year:
+##         :           :   :...years_at_residence <= 2: yes (5)
+##         :           :   :   years_at_residence > 2: no (3/1)
+##         :           :   employment_duration = 1 - 4 years:
+##         :           :   :...years_at_residence <= 2: yes (2)
+##         :           :   :   years_at_residence > 2: no (6/1)
+##         :           :   employment_duration = 4 - 7 years:
+##         :           :   :...amount <= 1680: yes (2)
+##         :           :       amount > 1680: no (3)
+##         :           purpose = furniture/appliances:
+##         :           :...job in {management,unskilled}: no (23/3)
+##         :               job = unemployed: yes (1)
+##         :               job = skilled:
+##         :               :...months_loan_duration > 13: [S1]
+##         :                   months_loan_duration <= 13:
+##         :                   :...housing in {other,own}: no (23/4)
+##         :                       housing = rent:
+##         :                       :...percent_of_income <= 3: yes (3)
+##         :                           percent_of_income > 3: no (2)
+##         months_loan_duration > 22:
+##         :...savings_balance = > 1000 DM: no (2)
+##             savings_balance = 500 - 1000 DM: yes (4/1)
+##             savings_balance = 100 - 500 DM:
+##             :...credit_history in {critical,poor}: no (14/3)
+##             :   credit_history = good:
+##             :   :...other_credit = bank: no (1)
+##             :       other_credit in {none,store}: yes (12/2)
+##             savings_balance = unknown:
+##             :...checking_balance = 1 - 200 DM: no (17)
+##             :   checking_balance = < 0 DM:
+##             :   :...credit_history = critical: no (1)
+##             :       credit_history in {good,poor}: yes (12/3)
+##             savings_balance = < 100 DM:
+##             :...months_loan_duration > 47: yes (21/2)
+##                 months_loan_duration <= 47:
+##                 :...housing = other:
+##                     :...percent_of_income <= 2: no (6)
+##                     :   percent_of_income > 2: yes (9/3)
+##                     housing = rent:
+##                     :...other_credit = bank: no (1)
+##                     :   other_credit in {none,store}: yes (16/3)
+##                     housing = own:
+##                     :...employment_duration = > 7 years: no (13/4)
+##                         employment_duration = 4 - 7 years:
+##                         :...job in {management,skilled,
+##                         :   :       unemployed}: yes (9/1)
+##                         :   job = unskilled: no (1)
+##                         employment_duration = unemployed:
+##                         :...years_at_residence <= 2: yes (4)
+##                         :   years_at_residence > 2: no (3)
+##                         employment_duration = 1 - 4 years:
+##                         :...purpose in {business,car0,education}: yes (7/1)
+##                         :   purpose in {furniture/appliances,
+##                         :   :           renovations}: no (7)
+##                         :   purpose = car:
+##                         :   :...years_at_residence <= 3: yes (3)
+##                         :       years_at_residence > 3: no (3)
+##                         employment_duration = < 1 year:
+##                         :...years_at_residence > 3: yes (5)
+##                             years_at_residence <= 3:
+##                             :...other_credit = bank: no (0)
+##                                 other_credit = store: yes (1)
+##                                 other_credit = none:
+##                                 :...checking_balance = 1 - 200 DM: no (8/2)
+##                                     checking_balance = < 0 DM:
+##                                     :...job in {management,skilled,
+##                                         :       unemployed}: yes (2)
+##                                         job = unskilled: no (3/1)
+## 
+## SubTree [S1]
+## 
+## employment_duration in {< 1 year,4 - 7 years}: no (4)
+## employment_duration in {> 7 years,1 - 4 years,unemployed}: yes (10)
+## 
+## -----  Trial 1:  -----
+## 
+## Decision tree:
+## 
+## checking_balance = unknown:
+## :...other_credit in {bank,store}:
+## :   :...purpose in {business,education,renovations}: yes (19.5/6.3)
+## :   :   purpose in {car0,furniture/appliances}: no (24.8/6.6)
+## :   :   purpose = car:
+## :   :   :...dependents <= 1: yes (20.1/4.8)
+## :   :       dependents > 1: no (2.4)
+## :   other_credit = none:
+## :   :...credit_history in {critical,perfect,very good}: no (102.8/4.4)
+## :       credit_history = good:
+## :       :...existing_loans_count <= 1: no (112.7/17.5)
+## :       :   existing_loans_count > 1: yes (18.9/7.9)
+## :       credit_history = poor:
+## :       :...years_at_residence <= 1: yes (4.4)
+## :           years_at_residence > 1:
+## :           :...percent_of_income <= 3: no (11.9)
+## :               percent_of_income > 3: yes (14.3/5.6)
+## checking_balance in {< 0 DM,> 200 DM,1 - 200 DM}:
+## :...savings_balance in {> 1000 DM,500 - 1000 DM}: no (42.9/11.3)
+##     savings_balance = unknown:
+##     :...credit_history in {perfect,poor}: no (8.5)
+##     :   credit_history in {critical,good,very good}:
+##     :   :...employment_duration in {< 1 year,> 7 years,4 - 7 years,
+##     :       :                       unemployed}: no (52.3/17.3)
+##     :       employment_duration = 1 - 4 years: yes (19.7/5.6)
+##     savings_balance = 100 - 500 DM:
+##     :...existing_loans_count > 3: yes (3)
+##     :   existing_loans_count <= 3:
+##     :   :...credit_history in {critical,poor,very good}: no (24.6/7.6)
+##     :       credit_history = perfect: yes (2.4)
+##     :       credit_history = good:
+##     :       :...months_loan_duration <= 27: no (23.7/10.5)
+##     :           months_loan_duration > 27: yes (5.6)
+##     savings_balance = < 100 DM:
+##     :...months_loan_duration > 42: yes (28/5.2)
+##         months_loan_duration <= 42:
+##         :...percent_of_income <= 2:
+##             :...employment_duration in {1 - 4 years,4 - 7 years,
+##             :   :                       unemployed}: no (86.2/23.8)
+##             :   employment_duration in {< 1 year,> 7 years}:
+##             :   :...housing = other: no (4.8/1.6)
+##             :       housing = rent: yes (10.7/2.4)
+##             :       housing = own:
+##             :       :...phone = yes: yes (12.9/4)
+##             :           phone = no:
+##             :           :...percent_of_income <= 1: no (7.1/0.8)
+##             :               percent_of_income > 1: yes (17.5/7.1)
+##             percent_of_income > 2:
+##             :...years_at_residence <= 1: no (31.6/8.5)
+##                 years_at_residence > 1:
+##                 :...credit_history in {perfect,poor}: yes (20.9/1.6)
+##                     credit_history in {critical,good,very good}:
+##                     :...job = skilled: yes (95/34.7)
+##                         job = unemployed: no (1.6)
+##                         job = management:
+##                         :...amount <= 11590: no (23.8/7)
+##                         :   amount > 11590: yes (3.8)
+##                         job = unskilled:
+##                         :...checking_balance in {< 0 DM,
+##                             :                    > 200 DM}: yes (23.8/9.5)
+##                             checking_balance = 1 - 200 DM: no (17.9/6.2)
+## 
+## -----  Trial 2:  -----
+## 
+## Decision tree:
+## 
+## checking_balance = unknown:
+## :...other_credit = bank:
+## :   :...existing_loans_count > 2: no (3.3)
+## :   :   existing_loans_count <= 2:
+## :   :   :...months_loan_duration <= 8: no (4)
+## :   :       months_loan_duration > 8: yes (43/16.6)
+## :   other_credit in {none,store}:
+## :   :...employment_duration in {< 1 year,unemployed}:
+## :       :...purpose in {business,renovations}: yes (6.4)
+## :       :   purpose in {car,car0,education}: no (13.2)
+## :       :   purpose = furniture/appliances:
+## :       :   :...amount <= 4594: no (22.5/7.3)
+## :       :       amount > 4594: yes (9.1)
+## :       employment_duration in {> 7 years,1 - 4 years,4 - 7 years}:
+## :       :...percent_of_income <= 3: no (92.7/3.6)
+## :           percent_of_income > 3:
+## :           :...age > 30: no (73.6/5.5)
+## :               age <= 30:
+## :               :...job in {management,unemployed,unskilled}: yes (14/4)
+## :                   job = skilled:
+## :                   :...credit_history = very good: no (0)
+## :                       credit_history = poor: yes (3.6)
+## :                       credit_history in {critical,good,perfect}:
+## :                       :...age <= 29: no (20.4/4.6)
+## :                           age > 29: yes (2.7)
+## checking_balance in {< 0 DM,> 200 DM,1 - 200 DM}:
+## :...housing = other:
+##     :...dependents > 1: yes (28.3/7.6)
+##     :   dependents <= 1:
+##     :   :...employment_duration in {< 1 year,4 - 7 years,
+##     :       :                       unemployed}: no (22.9/4.5)
+##     :       employment_duration in {> 7 years,1 - 4 years}: yes (29.6/10.5)
+##     housing = rent:
+##     :...credit_history = perfect: yes (5.3)
+##     :   credit_history = poor: no (7.1/0.7)
+##     :   credit_history in {critical,good,very good}:
+##     :   :...employment_duration = < 1 year: yes (28.3/9.3)
+##     :       employment_duration in {> 7 years,4 - 7 years,
+##     :       :                       unemployed}: no (33.9/12.3)
+##     :       employment_duration = 1 - 4 years:
+##     :       :...checking_balance = > 200 DM: no (2)
+##     :           checking_balance in {< 0 DM,1 - 200 DM}:
+##     :           :...years_at_residence <= 3: no (10.3/3.8)
+##     :               years_at_residence > 3: yes (20.4/3.1)
+##     housing = own:
+##     :...job in {management,unemployed}: yes (55.8/19.8)
+##         job in {skilled,unskilled}:
+##         :...months_loan_duration <= 7: no (25.3/2)
+##             months_loan_duration > 7:
+##             :...years_at_residence > 3: no (92.2/29.6)
+##                 years_at_residence <= 3:
+##                 :...purpose = renovations: yes (7/1.3)
+##                     purpose in {business,car0,education}: no (32.2/5.3)
+##                     purpose = car:
+##                     :...months_loan_duration > 40: no (7.2/0.7)
+##                     :   months_loan_duration <= 40:
+##                     :   :...amount <= 947: yes (12.9)
+##                     :       amount > 947:
+##                     :       :...months_loan_duration <= 16: no (23.2/8.5)
+##                     :           months_loan_duration > 16: [S1]
+##                     purpose = furniture/appliances:
+##                     :...savings_balance in {> 1000 DM,unknown}: no (15.4/3.2)
+##                         savings_balance in {100 - 500 DM,
+##                         :                   500 - 1000 DM}: yes (14.6/4.5)
+##                         savings_balance = < 100 DM:
+##                         :...months_loan_duration > 36: yes (7.1)
+##                             months_loan_duration <= 36:
+##                             :...existing_loans_count > 1: no (14.1/4.3)
+##                                 existing_loans_count <= 1: [S2]
+## 
+## SubTree [S1]
+## 
+## savings_balance in {< 100 DM,> 1000 DM,500 - 1000 DM,unknown}: yes (22.5/2.7)
+## savings_balance = 100 - 500 DM: no (4.5/0.7)
+## 
+## SubTree [S2]
+## 
+## checking_balance = < 0 DM: no (22.4/9.1)
+## checking_balance in {> 200 DM,1 - 200 DM}: yes (46.7/20)
+## 
+## -----  Trial 3:  -----
+## 
+## Decision tree:
+## 
+## checking_balance in {> 200 DM,unknown}:
+## :...employment_duration = > 7 years: no (98.9/17.1)
+## :   employment_duration = unemployed: yes (16/6.7)
+## :   employment_duration = < 1 year:
+## :   :...amount <= 1333: no (11.7)
+## :   :   amount > 1333:
+## :   :   :...amount <= 6681: no (38.2/16.3)
+## :   :       amount > 6681: yes (5.3)
+## :   employment_duration = 4 - 7 years:
+## :   :...checking_balance = > 200 DM: yes (9.6/3.6)
+## :   :   checking_balance = unknown:
+## :   :   :...age <= 22: yes (6.5/1.6)
+## :   :       age > 22: no (42.6/1.5)
+## :   employment_duration = 1 - 4 years:
+## :   :...percent_of_income <= 1: no (20.6/1.5)
+## :       percent_of_income > 1:
+## :       :...job in {skilled,unemployed}: no (64.9/17.6)
+## :           job in {management,unskilled}:
+## :           :...existing_loans_count > 2: yes (2.4)
+## :               existing_loans_count <= 2:
+## :               :...age <= 34: yes (26.4/10.7)
+## :                   age > 34: no (10.5)
+## checking_balance in {< 0 DM,1 - 200 DM}:
+## :...savings_balance in {> 1000 DM,500 - 1000 DM}: no (35.8/12)
+##     savings_balance = 100 - 500 DM:
+##     :...amount <= 1285: yes (12.8/0.5)
+##     :   amount > 1285:
+##     :   :...existing_loans_count <= 1: no (27/9.2)
+##     :       existing_loans_count > 1: yes (15.8/4.9)
+##     savings_balance = unknown:
+##     :...credit_history in {critical,perfect,poor}: no (15.5)
+##     :   credit_history in {good,very good}:
+##     :   :...age > 56: no (4.5)
+##     :       age <= 56:
+##     :       :...months_loan_duration <= 18: yes (24.5/5.6)
+##     :           months_loan_duration > 18: no (28.4/12.3)
+##     savings_balance = < 100 DM:
+##     :...months_loan_duration <= 11:
+##         :...job = management: yes (13.7/4.9)
+##         :   job in {skilled,unemployed,unskilled}: no (45.9/10)
+##         months_loan_duration > 11:
+##         :...percent_of_income <= 1:
+##             :...credit_history in {critical,poor,very good}: no (11.1)
+##             :   credit_history in {good,perfect}: yes (24.4/11)
+##             percent_of_income > 1:
+##             :...job = unemployed: yes (7/3.1)
+##                 job = management:
+##                 :...years_at_residence <= 1: no (6.6)
+##                 :   years_at_residence > 1:
+##                 :   :...checking_balance = < 0 DM: no (23.1/7)
+##                 :       checking_balance = 1 - 200 DM: yes (15.8/4)
+##                 job = unskilled:
+##                 :...housing in {other,rent}: yes (12.2/2.2)
+##                 :   housing = own:
+##                 :   :...purpose = car: yes (18.1/3.9)
+##                 :       purpose in {business,car0,education,
+##                 :                   furniture/appliances,
+##                 :                   renovations}: no (32.1/11.1)
+##                 job = skilled:
+##                 :...checking_balance = < 0 DM:
+##                     :...credit_history in {poor,very good}: yes (16.6)
+##                     :   credit_history in {critical,good,perfect}:
+##                     :   :...purpose in {business,car0,education,
+##                     :       :           renovations}: yes (10.2/1.5)
+##                     :       purpose = car:
+##                     :       :...age <= 51: yes (34.6/8.1)
+##                     :       :   age > 51: no (4.4)
+##                     :       purpose = furniture/appliances:
+##                     :       :...years_at_residence <= 1: no (4.4)
+##                     :           years_at_residence > 1:
+##                     :           :...other_credit = bank: yes (2.4)
+##                     :               other_credit = store: no (0.5)
+##                     :               other_credit = none:
+##                     :               :...amount <= 1743: no (11.5/2.4)
+##                     :                   amount > 1743: yes (29/6.6)
+##                     checking_balance = 1 - 200 DM:
+##                     :...months_loan_duration > 36: yes (6.5)
+##                         months_loan_duration <= 36:
+##                         :...other_credit in {bank,store}: yes (8/1.5)
+##                             other_credit = none:
+##                             :...dependents > 1: yes (7.4/3.1)
+##                                 dependents <= 1:
+##                                 :...percent_of_income <= 2: no (12.7/1.1)
+##                                     percent_of_income > 2: [S1]
+## 
+## SubTree [S1]
+## 
+## purpose in {business,renovations}: yes (3.9)
+## purpose in {car,car0,education,furniture/appliances}: no (19.8/6.1)
+## 
+## -----  Trial 4:  -----
+## 
+## Decision tree:
+## 
+## checking_balance in {> 200 DM,unknown}:
+## :...other_credit = store: no (20.6/9.6)
+## :   other_credit = none:
+## :   :...employment_duration in {> 7 years,1 - 4 years,4 - 7 years,
+## :   :   :                       unemployed}: no (211.3/45.7)
+## :   :   employment_duration = < 1 year:
+## :   :   :...amount <= 1333: no (8.8)
+## :   :       amount > 1333:
+## :   :       :...purpose in {business,car0,education,furniture/appliances,
+## :   :           :           renovations}: yes (32.9/8.1)
+## :   :           purpose = car: no (4.9)
+## :   other_credit = bank:
+## :   :...age > 44: no (14.4/1.2)
+## :       age <= 44:
+## :       :...years_at_residence <= 1: no (5)
+## :           years_at_residence > 1:
+## :           :...housing = rent: yes (4.3)
+## :               housing in {other,own}:
+## :               :...job = unemployed: yes (0)
+## :                   job = management: no (4)
+## :                   job in {skilled,unskilled}:
+## :                   :...age <= 26: no (3.7)
+## :                       age > 26:
+## :                       :...savings_balance in {< 100 DM,500 - 1000 DM,
+## :                           :                   unknown}: yes (30.6/7.4)
+## :                           savings_balance in {> 1000 DM,
+## :                                               100 - 500 DM}: no (4)
+## checking_balance in {< 0 DM,1 - 200 DM}:
+## :...credit_history = perfect:
+##     :...housing in {other,rent}: yes (7.8)
+##     :   housing = own: no (20.5/9)
+##     credit_history = poor:
+##     :...checking_balance = < 0 DM: yes (10.4/2.2)
+##     :   checking_balance = 1 - 200 DM:
+##     :   :...other_credit in {bank,none}: no (24/4.3)
+##     :       other_credit = store: yes (5.8/1.2)
+##     credit_history = very good:
+##     :...age <= 23: no (5.7)
+##     :   age > 23:
+##     :   :...months_loan_duration <= 27: yes (28.4/3.7)
+##     :       months_loan_duration > 27: no (6.9/2)
+##     credit_history = critical:
+##     :...years_at_residence <= 1: no (6.7)
+##     :   years_at_residence > 1:
+##     :   :...purpose in {business,car,car0,renovations}: no (62.2/21.9)
+##     :       purpose = education: yes (7.9/0.9)
+##     :       purpose = furniture/appliances:
+##     :       :...phone = yes: no (14.5/2.8)
+##     :           phone = no:
+##     :           :...amount <= 1175: no (5.2)
+##     :               amount > 1175: yes (30.1/7.6)
+##     credit_history = good:
+##     :...savings_balance in {> 1000 DM,500 - 1000 DM}: no (15.7/4.7)
+##         savings_balance = 100 - 500 DM: yes (32.1/11.7)
+##         savings_balance = unknown:
+##         :...job = unskilled: no (4.4)
+##         :   job in {management,skilled,unemployed}:
+##         :   :...checking_balance = < 0 DM: yes (27.8/6)
+##         :       checking_balance = 1 - 200 DM: no (26.8/10.4)
+##         savings_balance = < 100 DM:
+##         :...dependents > 1:
+##             :...existing_loans_count > 1: no (2.6/0.4)
+##             :   existing_loans_count <= 1:
+##             :   :...years_at_residence <= 2: yes (10.2/2.9)
+##             :       years_at_residence > 2: no (20.4/5.9)
+##             dependents <= 1:
+##             :...purpose in {business,car0}: no (9.7/2.5)
+##                 purpose in {education,renovations}: yes (13/5.1)
+##                 purpose = car:
+##                 :...employment_duration in {< 1 year,> 7 years,
+##                 :   :                       4 - 7 years}: yes (32/8.3)
+##                 :   employment_duration in {1 - 4 years,
+##                 :                           unemployed}: no (24.9/9)
+##                 purpose = furniture/appliances:
+##                 :...months_loan_duration > 39: yes (4.8)
+##                     months_loan_duration <= 39:
+##                     :...phone = yes: yes (21.9/9.2)
+##                         phone = no:
+##                         :...employment_duration in {< 1 year,> 7 years,
+##                             :                       4 - 7 years}: no (34.1/8.1)
+##                             employment_duration = unemployed: yes (3.3/0.4)
+##                             employment_duration = 1 - 4 years:
+##                             :...percent_of_income <= 1: yes (3.8)
+##                                 percent_of_income > 1:
+##                                 :...months_loan_duration > 21: no (4.9/0.4)
+##                                     months_loan_duration <= 21:
+##                                     :...years_at_residence <= 3: no (20.9/8.8)
+##                                         years_at_residence > 3: yes (5.8)
+## 
+## -----  Trial 5:  -----
+## 
+## Decision tree:
+## 
+## checking_balance = unknown:
+## :...other_credit = store: yes (16.9/7.5)
+## :   other_credit = bank:
+## :   :...housing = other: no (8.3/1.8)
+## :   :   housing = rent: yes (4.4/0.8)
+## :   :   housing = own:
+## :   :   :...phone = no: no (26.9/9.7)
+## :   :       phone = yes: yes (12.1/5)
+## :   other_credit = none:
+## :   :...credit_history in {critical,perfect,very good}: no (60.4/5.1)
+## :       credit_history in {good,poor}:
+## :       :...purpose in {business,car,car0,education}: no (53.6/12.8)
+## :           purpose = renovations: yes (7.3/1.1)
+## :           purpose = furniture/appliances:
+## :           :...job = unemployed: no (0)
+## :               job in {management,unskilled}: yes (19.2/7)
+## :               job = skilled:
+## :               :...phone = yes: no (14.6/1.8)
+## :                   phone = no:
+## :                   :...age > 32: no (9.2)
+## :                       age <= 32:
+## :                       :...employment_duration = 1 - 4 years: no (4.1)
+## :                           employment_duration in {< 1 year,> 7 years,
+## :                           :                       4 - 7 years,unemployed}:
+## :                           :...savings_balance in {< 100 DM,
+## :                               :                   100 - 500 DM}: yes (20.5/3)
+## :                               savings_balance in {> 1000 DM,500 - 1000 DM,
+## :                                                   unknown}: no (3.4)
+## checking_balance in {< 0 DM,> 200 DM,1 - 200 DM}:
+## :...percent_of_income <= 2:
+##     :...amount > 11054: yes (14.2/1.2)
+##     :   amount <= 11054:
+##     :   :...other_credit = bank: no (32.3/9.7)
+##     :       other_credit = store: yes (8.9/2.6)
+##     :       other_credit = none:
+##     :       :...purpose in {business,renovations}: yes (20.3/9.1)
+##     :           purpose in {car0,education}: no (8.4/3.7)
+##     :           purpose = car:
+##     :           :...savings_balance in {< 100 DM,> 1000 DM,500 - 1000 DM,
+##     :           :   :                   unknown}: no (46.6/7.9)
+##     :           :   savings_balance = 100 - 500 DM: yes (13.8/3.3)
+##     :           purpose = furniture/appliances:
+##     :           :...employment_duration in {> 7 years,
+##     :               :                       4 - 7 years}: no (18.2/2.6)
+##     :               employment_duration in {1 - 4 years,
+##     :               :                       unemployed}: yes (50.8/19.5)
+##     :               employment_duration = < 1 year:
+##     :               :...job in {management,skilled,unemployed}: no (16.3/2.9)
+##     :                   job = unskilled: yes (6/1.6)
+##     percent_of_income > 2:
+##     :...years_at_residence <= 1:
+##         :...other_credit in {bank,store}: no (7.6)
+##         :   other_credit = none:
+##         :   :...months_loan_duration > 42: no (2.9)
+##         :       months_loan_duration <= 42:
+##         :       :...age <= 36: no (26.6/8.4)
+##         :           age > 36: yes (5.3)
+##         years_at_residence > 1:
+##         :...job = unemployed: no (5.2)
+##             job in {management,skilled,unskilled}:
+##             :...credit_history = perfect: yes (10.9)
+##                 credit_history in {critical,good,poor,very good}:
+##                 :...employment_duration = < 1 year:
+##                     :...checking_balance = > 200 DM: no (2.7)
+##                     :   checking_balance in {< 0 DM,1 - 200 DM}:
+##                     :   :...months_loan_duration > 21: yes (23.4/0.7)
+##                     :       months_loan_duration <= 21:
+##                     :       :...amount <= 1928: yes (18.4/4.4)
+##                     :           amount > 1928: no (4.5)
+##                     employment_duration in {> 7 years,1 - 4 years,4 - 7 years,
+##                     :                       unemployed}:
+##                     :...months_loan_duration <= 11:
+##                         :...age > 47: no (12.2)
+##                         :   age <= 47:
+##                         :   :...purpose in {business,car,car0,
+##                         :       :           furniture/appliances,
+##                         :       :           renovations}: no (25/9.2)
+##                         :       purpose = education: yes (3.5)
+##                         months_loan_duration > 11:
+##                         :...savings_balance in {> 1000 DM,100 - 500 DM}:
+##                             :...age <= 58: no (22.7/3.4)
+##                             :   age > 58: yes (4.4)
+##                             savings_balance in {< 100 DM,500 - 1000 DM,unknown}:
+##                             :...years_at_residence <= 2: yes (76.1/22.8)
+##                                 years_at_residence > 2:
+##                                 :...purpose in {business,car0,
+##                                     :           education}: yes (24.7/7.1)
+##                                     purpose = renovations: no (1.1)
+##                                     purpose = furniture/appliances: [S1]
+##                                     purpose = car:
+##                                     :...amount <= 1388: yes (17.8/2.2)
+##                                         amount > 1388:
+##                                         :...housing = own: no (10.9)
+##                                             housing in {other,rent}: [S2]
+## 
+## SubTree [S1]
+## 
+## employment_duration = unemployed: no (4.4)
+## employment_duration in {> 7 years,1 - 4 years,4 - 7 years}:
+## :...checking_balance = < 0 DM: yes (35.6/12.4)
+##     checking_balance in {> 200 DM,1 - 200 DM}: no (29/10.5)
+## 
+## SubTree [S2]
+## 
+## savings_balance in {< 100 DM,500 - 1000 DM}: yes (21.4/6.4)
+## savings_balance = unknown: no (6.8/1.5)
+## 
+## -----  Trial 6:  -----
+## 
+## Decision tree:
+## 
+## checking_balance in {> 200 DM,unknown}:
+## :...purpose = car0: no (2.2)
+## :   purpose = renovations: yes (8.4/3.3)
+## :   purpose = education:
+## :   :...age <= 44: yes (19.8/7.7)
+## :   :   age > 44: no (4.4)
+## :   purpose = business:
+## :   :...existing_loans_count > 2: yes (3.3)
+## :   :   existing_loans_count <= 2:
+## :   :   :...amount <= 1823: no (8.1)
+## :   :       amount > 1823:
+## :   :       :...percent_of_income <= 3: no (12.1/3.3)
+## :   :           percent_of_income > 3: yes (13.2/3.4)
+## :   purpose = car:
+## :   :...job in {management,unemployed}: no (20.8/1.6)
+## :   :   job = unskilled:
+## :   :   :...years_at_residence <= 3: no (11/1.3)
+## :   :   :   years_at_residence > 3: yes (14.5/3.2)
+## :   :   job = skilled:
+## :   :   :...other_credit in {bank,store}: yes (17.6/4.9)
+## :   :       other_credit = none:
+## :   :       :...existing_loans_count <= 2: no (24.6)
+## :   :           existing_loans_count > 2: yes (2.4/0.3)
+## :   purpose = furniture/appliances:
+## :   :...age > 44: no (22.7)
+## :       age <= 44:
+## :       :...job = unemployed: no (0)
+## :           job = unskilled:
+## :           :...existing_loans_count <= 1: yes (20.9/5.6)
+## :           :   existing_loans_count > 1: no (4.5)
+## :           job in {management,skilled}:
+## :           :...dependents > 1: no (6.6)
+## :               dependents <= 1:
+## :               :...existing_loans_count <= 1:
+## :                   :...savings_balance in {> 1000 DM,100 - 500 DM,
+## :                   :   :                   500 - 1000 DM,
+## :                   :   :                   unknown}: no (16.9)
+## :                   :   savings_balance = < 100 DM:
+## :                   :   :...age <= 22: yes (8.5/1.3)
+## :                   :       age > 22: no (43.1/8.8)
+## :                   existing_loans_count > 1:
+## :                   :...housing in {other,rent}: yes (9.9/2.1)
+## :                       housing = own:
+## :                       :...credit_history in {critical,poor,
+## :                           :                  very good}: no (18.6/1.6)
+## :                           credit_history in {good,perfect}: yes (14.9/4.3)
+## checking_balance in {< 0 DM,1 - 200 DM}:
+## :...credit_history = perfect: yes (28.1/9.6)
+##     credit_history = very good:
+##     :...age <= 23: no (5.5)
+##     :   age > 23: yes (30/8.1)
+##     credit_history = poor:
+##     :...percent_of_income <= 1: no (6.5)
+##     :   percent_of_income > 1:
+##     :   :...savings_balance in {500 - 1000 DM,unknown}: no (6.4)
+##     :       savings_balance in {< 100 DM,> 1000 DM,100 - 500 DM}:
+##     :       :...dependents <= 1: yes (25.1/8)
+##     :           dependents > 1: no (5/0.9)
+##     credit_history = critical:
+##     :...savings_balance = unknown: no (8.4)
+##     :   savings_balance in {< 100 DM,> 1000 DM,100 - 500 DM,500 - 1000 DM}:
+##     :   :...other_credit = bank: yes (16.2/4.3)
+##     :       other_credit = store: no (3.7/0.9)
+##     :       other_credit = none:
+##     :       :...savings_balance in {> 1000 DM,500 - 1000 DM}: yes (7.3/2.3)
+##     :           savings_balance = 100 - 500 DM: no (5.9)
+##     :           savings_balance = < 100 DM:
+##     :           :...purpose = business: no (4.5/2.2)
+##     :               purpose in {car0,education,renovations}: yes (8.5/2.2)
+##     :               purpose = car:
+##     :               :...age <= 29: yes (6.9)
+##     :               :   age > 29: no (25.6/6.9)
+##     :               purpose = furniture/appliances:
+##     :               :...months_loan_duration <= 36: no (38.4/10.9)
+##     :                   months_loan_duration > 36: yes (3.8)
+##     credit_history = good:
+##     :...amount > 8086: yes (24/3.8)
+##         amount <= 8086:
+##         :...phone = yes:
+##             :...age <= 28: yes (23.9/7.5)
+##             :   age > 28: no (69.4/17.9)
+##             phone = no:
+##             :...other_credit in {bank,store}: yes (25.1/7.2)
+##                 other_credit = none:
+##                 :...percent_of_income <= 2:
+##                     :...job in {management,unemployed,unskilled}: no (15.6/2.7)
+##                     :   job = skilled:
+##                     :   :...amount <= 1386: yes (9.9/1)
+##                     :       amount > 1386:
+##                     :       :...age <= 24: yes (13.4/4.6)
+##                     :           age > 24: no (27.8/3.1)
+##                     percent_of_income > 2:
+##                     :...checking_balance = < 0 DM: yes (62.5/21.4)
+##                         checking_balance = 1 - 200 DM:
+##                         :...months_loan_duration > 42: yes (4.9)
+##                             months_loan_duration <= 42:
+##                             :...existing_loans_count > 1: no (5)
+##                                 existing_loans_count <= 1:
+##                                 :...age <= 35: no (39.4/13.2)
+##                                     age > 35: yes (14.7/4.2)
+## 
+## -----  Trial 7:  -----
+## 
+## Decision tree:
+## 
+## checking_balance = unknown:
+## :...employment_duration in {> 7 years,4 - 7 years}: no (101.1/20.4)
+## :   employment_duration = unemployed: yes (16.6/8)
+## :   employment_duration = < 1 year:
+## :   :...amount <= 4594: no (30/5.7)
+## :   :   amount > 4594: yes (10.6/0.3)
+## :   employment_duration = 1 - 4 years:
+## :   :...dependents > 1: no (8)
+## :       dependents <= 1:
+## :       :...months_loan_duration <= 16: no (32.8/5.3)
+## :           months_loan_duration > 16:
+## :           :...existing_loans_count > 2: yes (2.7)
+## :               existing_loans_count <= 2:
+## :               :...percent_of_income <= 3: no (20.9/5.9)
+## :                   percent_of_income > 3:
+## :                   :...purpose in {business,car0,education}: yes (10.8)
+## :                       purpose in {car,furniture/appliances,
+## :                                   renovations}: no (19.7/7.5)
+## checking_balance in {< 0 DM,> 200 DM,1 - 200 DM}:
+## :...purpose in {car0,education,renovations}: no (67.2/29.2)
+##     purpose = business:
+##     :...age > 46: yes (5.2)
+##     :   age <= 46:
+##     :   :...months_loan_duration <= 18: no (17.5)
+##     :       months_loan_duration > 18:
+##     :       :...other_credit in {bank,store}: no (10/0.5)
+##     :           other_credit = none:
+##     :           :...employment_duration in {> 7 years,
+##     :               :                       unemployed}: yes (6.6)
+##     :               employment_duration in {< 1 year,1 - 4 years,4 - 7 years}:
+##     :               :...age <= 25: yes (4)
+##     :                   age > 25: no (19.2/5.6)
+##     purpose = car:
+##     :...amount <= 1297: yes (52.4/12.9)
+##     :   amount > 1297:
+##     :   :...percent_of_income <= 2:
+##     :       :...phone = no: no (32.7/6.1)
+##     :       :   phone = yes:
+##     :       :   :...years_at_residence <= 3: no (20/4.9)
+##     :       :       years_at_residence > 3: yes (14.7/3.8)
+##     :       percent_of_income > 2:
+##     :       :...percent_of_income <= 3: yes (33.1/11.3)
+##     :           percent_of_income > 3:
+##     :           :...months_loan_duration <= 18: no (18.2/1.6)
+##     :               months_loan_duration > 18:
+##     :               :...existing_loans_count <= 1: no (19.5/7.2)
+##     :                   existing_loans_count > 1: yes (13.8/1)
+##     purpose = furniture/appliances:
+##     :...savings_balance = > 1000 DM: no (5.2)
+##         savings_balance = 100 - 500 DM: yes (18.6/6)
+##         savings_balance in {< 100 DM,500 - 1000 DM,unknown}:
+##         :...existing_loans_count > 1:
+##             :...existing_loans_count > 2: no (3.6)
+##             :   existing_loans_count <= 2:
+##             :   :...housing = other: yes (3.3)
+##             :       housing in {own,rent}:
+##             :       :...savings_balance = 500 - 1000 DM: yes (3.5/1)
+##             :           savings_balance = unknown: no (6.9)
+##             :           savings_balance = < 100 DM:
+##             :           :...age > 54: yes (2.1)
+##             :               age <= 54: [S1]
+##             existing_loans_count <= 1:
+##             :...credit_history in {critical,perfect}: yes (20.3/7.6)
+##                 credit_history in {poor,very good}: no (20.8/9.5)
+##                 credit_history = good:
+##                 :...months_loan_duration <= 7: no (11.4)
+##                     months_loan_duration > 7:
+##                     :...other_credit = bank: no (14.2/4.6)
+##                         other_credit = store: yes (11.7/3.9)
+##                         other_credit = none:
+##                         :...percent_of_income <= 1: no (20.5/5.2)
+##                             percent_of_income > 1:
+##                             :...amount > 6078: yes (10.9/1.1)
+##                                 amount <= 6078:
+##                                 :...dependents > 1: yes (8.7/2.5)
+##                                     dependents <= 1: [S2]
+## 
+## SubTree [S1]
+## 
+## employment_duration in {< 1 year,4 - 7 years}: yes (15/2.5)
+## employment_duration in {> 7 years,1 - 4 years,unemployed}: no (25.7/2.9)
+## 
+## SubTree [S2]
+## 
+## employment_duration = > 7 years: no (17.9/2.5)
+## employment_duration in {< 1 year,1 - 4 years,4 - 7 years,unemployed}:
+## :...job = management: no (6.6)
+##     job = unemployed: yes (1.1)
+##     job in {skilled,unskilled}:
+##     :...years_at_residence <= 1: no (11.8/1.8)
+##         years_at_residence > 1:
+##         :...checking_balance = > 200 DM: no (14.7/6.3)
+##             checking_balance = 1 - 200 DM: yes (25.1/8.8)
+##             checking_balance = < 0 DM:
+##             :...months_loan_duration <= 16: no (13.8/3.4)
+##                 months_loan_duration > 16: yes (19.1/5.5)
+## 
+## -----  Trial 8:  -----
+## 
+## Decision tree:
+## 
+## checking_balance in {< 0 DM,1 - 200 DM}:
+## :...credit_history = perfect:
+## :   :...housing in {other,rent}: yes (8.3)
+## :   :   housing = own:
+## :   :   :...age <= 34: no (16.6/4.7)
+## :   :       age > 34: yes (5.8)
+## :   credit_history = poor:
+## :   :...checking_balance = < 0 DM: yes (12/2.7)
+## :   :   checking_balance = 1 - 200 DM:
+## :   :   :...housing = rent: no (8.6)
+## :   :       housing in {other,own}:
+## :   :       :...amount <= 2279: yes (6.8/0.6)
+## :   :           amount > 2279: no (20/5.7)
+## :   credit_history = very good:
+## :   :...existing_loans_count > 1: yes (2.5)
+## :   :   existing_loans_count <= 1:
+## :   :   :...age <= 23: no (3.7)
+## :   :       age > 23:
+## :   :       :...amount <= 8386: yes (32.9/8.1)
+## :   :           amount > 8386: no (2.5)
+## :   credit_history = critical:
+## :   :...years_at_residence <= 1: no (8)
+## :   :   years_at_residence > 1:
+## :   :   :...savings_balance in {> 1000 DM,100 - 500 DM,500 - 1000 DM,
+## :   :       :                   unknown}: no (25.5/5.7)
+## :   :       savings_balance = < 100 DM:
+## :   :       :...age > 61: no (6)
+## :   :           age <= 61:
+## :   :           :...existing_loans_count > 2: no (10.7/2.4)
+## :   :               existing_loans_count <= 2:
+## :   :               :...age > 56: yes (5.4)
+## :   :                   age <= 56:
+## :   :                   :...amount > 2483: yes (34.1/8.9)
+## :   :                       amount <= 2483:
+## :   :                       :...purpose in {business,education}: yes (4.4)
+## :   :                           purpose in {car,car0,furniture/appliances,
+## :   :                                       renovations}: no (41.4/10.8)
+## :   credit_history = good:
+## :   :...amount > 8086: yes (26.6/4.8)
+## :       amount <= 8086:
+## :       :...savings_balance in {> 1000 DM,500 - 1000 DM}: no (17.5/5.1)
+## :           savings_balance = 100 - 500 DM:
+## :           :...months_loan_duration <= 27: no (21.3/7.1)
+## :           :   months_loan_duration > 27: yes (5.1)
+## :           savings_balance = unknown:
+## :           :...age <= 56: yes (44.7/16.9)
+## :           :   age > 56: no (4.4)
+## :           savings_balance = < 100 DM:
+## :           :...job = unemployed: yes (0.9)
+## :               job = management:
+## :               :...employment_duration in {< 1 year,1 - 4 years,4 - 7 years,
+## :               :   :                       unemployed}: no (17.3/1.6)
+## :               :   employment_duration = > 7 years: yes (8/1.2)
+## :               job = unskilled:
+## :               :...months_loan_duration <= 26: no (59/19.7)
+## :               :   months_loan_duration > 26: yes (3.3)
+## :               job = skilled:
+## :               :...purpose in {business,car0,education,
+## :                   :           renovations}: yes (16.6/4.1)
+## :                   purpose = car:
+## :                   :...dependents <= 1: yes (27.7/10.6)
+## :                   :   dependents > 1: no (8.1/1.4)
+## :                   purpose = furniture/appliances:
+## :                   :...years_at_residence <= 1: no (18.7/6.5)
+## :                       years_at_residence > 1:
+## :                       :...other_credit = bank: yes (4.5)
+## :                           other_credit = store: no (2.3)
+## :                           other_credit = none:
+## :                           :...percent_of_income <= 3: yes (33.5/15)
+## :                               percent_of_income > 3: no (27.3/9.3)
+## checking_balance in {> 200 DM,unknown}:
+## :...years_at_residence > 2: no (135.6/32.2)
+##     years_at_residence <= 2:
+##     :...months_loan_duration <= 8: no (12.9)
+##         months_loan_duration > 8:
+##         :...months_loan_duration <= 9: yes (10.4/1.3)
+##             months_loan_duration > 9:
+##             :...months_loan_duration <= 16: no (31.3/4.2)
+##                 months_loan_duration > 16:
+##                 :...purpose in {business,car0,renovations}: no (21.3/8.4)
+##                     purpose = education: yes (6.3/0.8)
+##                     purpose = car:
+##                     :...credit_history in {critical,very good}: yes (17.3/2.6)
+##                     :   credit_history in {good,perfect,poor}: no (9.6)
+##                     purpose = furniture/appliances:
+##                     :...credit_history in {critical,perfect,
+##                         :                  very good}: no (5.6)
+##                         credit_history = poor: yes (4.9)
+##                         credit_history = good:
+##                         :...housing in {other,rent}: no (2.6)
+##                             housing = own:
+##                             :...age <= 25: no (6.8)
+##                                 age > 25: yes (29.2/10.2)
+## 
+## -----  Trial 9:  -----
+## 
+## Decision tree:
+## 
+## checking_balance = unknown:
+## :...dependents > 1: no (26)
+## :   dependents <= 1:
+## :   :...amount <= 1474: no (39.7)
+## :       amount > 1474:
+## :       :...employment_duration in {> 7 years,4 - 7 years}:
+## :           :...years_at_residence > 2: no (21.8)
+## :           :   years_at_residence <= 2:
+## :           :   :...age <= 23: yes (4.1)
+## :           :       age > 23: no (19.7/4.2)
+## :           employment_duration in {< 1 year,1 - 4 years,unemployed}:
+## :           :...purpose in {business,renovations}: yes (23.2/3.6)
+## :               purpose in {car,car0,education,furniture/appliances}:
+## :               :...other_credit in {bank,store}: yes (29.1/10.5)
+## :                   other_credit = none:
+## :                   :...purpose in {car,car0}: no (12.3)
+## :                       purpose in {education,furniture/appliances}:
+## :                       :...amount <= 4455: no (23.7/4.4)
+## :                           amount > 4455: yes (11.1/1.3)
+## checking_balance in {< 0 DM,> 200 DM,1 - 200 DM}:
+## :...percent_of_income <= 2:
+##     :...amount > 11054: yes (15.7/3.6)
+##     :   amount <= 11054:
+##     :   :...savings_balance in {> 1000 DM,500 - 1000 DM,
+##     :       :                   unknown}: no (41.5/11.2)
+##     :       savings_balance = 100 - 500 DM:
+##     :       :...other_credit = bank: no (5.1)
+##     :       :   other_credit in {none,store}: yes (21.7/9.4)
+##     :       savings_balance = < 100 DM:
+##     :       :...employment_duration in {> 7 years,unemployed}: no (34.6/11.5)
+##     :           employment_duration = 1 - 4 years:
+##     :           :...job = management: yes (5.1/0.8)
+##     :           :   job in {skilled,unemployed,unskilled}: no (65.4/15.8)
+##     :           employment_duration = < 1 year:
+##     :           :...amount <= 2327:
+##     :           :   :...age <= 34: yes (20.5/1.9)
+##     :           :   :   age > 34: no (3)
+##     :           :   amount > 2327:
+##     :           :   :...other_credit = bank: yes (2.8)
+##     :           :       other_credit in {none,store}: no (20.1/3.9)
+##     :           employment_duration = 4 - 7 years:
+##     :           :...dependents > 1: no (4.6)
+##     :               dependents <= 1:
+##     :               :...amount <= 6527: no (16.8/7.2)
+##     :                   amount > 6527: yes (7)
+##     percent_of_income > 2:
+##     :...housing = rent:
+##         :...checking_balance in {< 0 DM,1 - 200 DM}: yes (69/22.1)
+##         :   checking_balance = > 200 DM: no (3.4)
+##         housing = other:
+##         :...existing_loans_count > 1: yes (18.7/5.3)
+##         :   existing_loans_count <= 1:
+##         :   :...savings_balance in {< 100 DM,> 1000 DM,
+##         :       :                   500 - 1000 DM}: yes (29.1/8.6)
+##         :       savings_balance in {100 - 500 DM,unknown}: no (15.3/3.2)
+##         housing = own:
+##         :...credit_history in {perfect,poor}: yes (26.9/7.4)
+##             credit_history = very good: no (14.9/5.6)
+##             credit_history = critical:
+##             :...other_credit = bank: yes (11.7/3.4)
+##             :   other_credit in {none,store}: no (63/20.3)
+##             credit_history = good:
+##             :...other_credit = store: yes (8.9/1.4)
+##                 other_credit in {bank,none}:
+##                 :...age > 54: no (9.5)
+##                     age <= 54:
+##                     :...existing_loans_count > 1: no (10.2/2.7)
+##                         existing_loans_count <= 1:
+##                         :...purpose in {business,renovations}: no (10.1/3.6)
+##                             purpose in {car0,education}: yes (4.7)
+##                             purpose = car:
+##                             :...other_credit = bank: yes (4.9)
+##                             :   other_credit = none:
+##                             :   :...years_at_residence > 2: no (14.8/4.5)
+##                             :       years_at_residence <= 2:
+##                             :       :...amount <= 2150: no (14.9/6.2)
+##                             :           amount > 2150: yes (11.1)
+##                             purpose = furniture/appliances:
+##                             :...savings_balance = 100 - 500 DM: yes (3.8)
+##                                 savings_balance in {> 1000 DM,
+##                                 :                   500 - 1000 DM}: no (2.8)
+##                                 savings_balance in {< 100 DM,unknown}:
+##                                 :...months_loan_duration > 39: yes (3.3)
+##                                     months_loan_duration <= 39:
+##                                     :...dependents <= 1: no (57.6/19.4)
+##                                         dependents > 1: yes (4.6/1.1)
+## 
+## 
+## Evaluation on training data (900 cases):
+## 
+## Trial        Decision Tree   
+## -----      ----------------  
+##    Size      Errors  
+## 
+##    0     56  133(14.8%)
+##    1     34  211(23.4%)
+##    2     39  201(22.3%)
+##    3     47  179(19.9%)
+##    4     46  174(19.3%)
+##    5     50  197(21.9%)
+##    6     55  187(20.8%)
+##    7     50  190(21.1%)
+##    8     51  192(21.3%)
+##    9     47  169(18.8%)
+## boost             34( 3.8%)   <<
+## 
+## 
+##     (a)   (b)    <-classified as
+##    ----  ----
+##     629     4    (a): class no
+##      30   237    (b): class yes
+## 
+## 
+##  Attribute usage:
+## 
+##  100.00% checking_balance
+##  100.00% purpose
+##   97.11% years_at_residence
+##   96.67% employment_duration
+##   94.78% credit_history
+##   94.67% other_credit
+##   92.56% job
+##   92.11% percent_of_income
+##   90.33% amount
+##   85.11% months_loan_duration
+##   82.78% age
+##   82.78% existing_loans_count
+##   75.78% dependents
+##   71.56% housing
+##   70.78% savings_balance
+##   49.22% phone
+## 
+## 
+## Time: 0.1 secs
+\end{verbatim}
+
+　ブースティングにより、学習データにおける正解率が13.9\%から3.8\%に向上した。このモデルを使用して検証データの予測精度を確認する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{credit\_boost\_pred10 }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(credit\_boost10, credit\_test)}
+
+\FunctionTok{CrossTable}\NormalTok{(credit\_test}\SpecialCharTok{$}\NormalTok{default,}
+\NormalTok{           credit\_boost\_pred10,}
+           \AttributeTok{prop.chisq =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{prop.c =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{prop.r =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{dnn =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}actulal default\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}predicted default\textquotesingle{}}\NormalTok{)}
+\NormalTok{           )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  100 
+## 
+##  
+##                 | predicted default 
+## actulal default |        no |       yes | Row Total | 
+## ----------------|-----------|-----------|-----------|
+##              no |        62 |         5 |        67 | 
+##                 |     0.620 |     0.050 |           | 
+## ----------------|-----------|-----------|-----------|
+##             yes |        13 |        20 |        33 | 
+##                 |     0.130 |     0.200 |           | 
+## ----------------|-----------|-----------|-----------|
+##    Column Total |        75 |        25 |       100 | 
+## ----------------|-----------|-----------|-----------|
+## 
+## 
+\end{verbatim}
+
+　ブースティングを実施する前の正解率（Accuracy）が73\%から82\%に向上した。適合率（Precision）も42\%から61\%に向上したが、債務不履行の取りこぼしとしてはまだ大きい。
+
+\paragraph{誤分類のコストを指定する}\label{ux8aa4ux5206ux985eux306eux30b3ux30b9ux30c8ux3092ux6307ux5b9aux3059ux308b}
+
+　偽陰性のコストが高く付くことから、C5.0アルゴリズムでは、よりコストの掛かる誤分類を阻止するために、様々な種類の誤分類にペナルティを与えることができる。これらのペナルティは\textbf{コスト行列}（cost
+matrix）で指定する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matrix\_dimensions }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}no\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}yes\textquotesingle{}}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}no\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}yes\textquotesingle{}}\NormalTok{))}
+\FunctionTok{names}\NormalTok{(matrix\_dimensions) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}predicted\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}actual\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# コストマトリックスの中身の確認}
+\NormalTok{matrix\_dimensions}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $predicted
+## [1] "no"  "yes"
+## 
+## $actual
+## [1] "no"  "yes"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ペナルティー値の設定}
+\NormalTok{error\_cost }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{dimnames =}\NormalTok{ matrix\_dimensions)}
+\NormalTok{error\_cost}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          actual
+## predicted no yes
+##       no   0   4
+##       yes  1   0
+\end{verbatim}
+
+　このペナルティにて再びモデルを学習させて、偽陰性を低下させられるかを確かめる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ペナルティを用いて学習器を訓練}
+\NormalTok{credit\_cost }\OtherTok{\textless{}{-}} \FunctionTok{C5.0}\NormalTok{(}
+\NormalTok{    credit\_train }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{ default),}
+\NormalTok{    credit\_train}\SpecialCharTok{$}\NormalTok{default,}
+    \AttributeTok{costs =}\NormalTok{ error\_cost}
+\NormalTok{)}
+
+\CommentTok{\# 学習したモデルで検証データで予測}
+\NormalTok{credit\_cost\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(credit\_cost, credit\_test)}
+
+\CommentTok{\# 予測結果の精度検証}
+\FunctionTok{CrossTable}\NormalTok{(credit\_test}\SpecialCharTok{$}\NormalTok{default,}
+\NormalTok{           credit\_cost\_pred,}
+           \AttributeTok{prop.chisq =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{prop.c =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{prop.r =} \ConstantTok{FALSE}\NormalTok{,}
+           \AttributeTok{dnn =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}actual default\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}predict default\textquotesingle{}}\NormalTok{)}
+\NormalTok{           )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  100 
+## 
+##  
+##                | predict default 
+## actual default |        no |       yes | Row Total | 
+## ---------------|-----------|-----------|-----------|
+##             no |        37 |        30 |        67 | 
+##                |     0.370 |     0.300 |           | 
+## ---------------|-----------|-----------|-----------|
+##            yes |         7 |        26 |        33 | 
+##                |     0.070 |     0.260 |           | 
+## ---------------|-----------|-----------|-----------|
+##   Column Total |        44 |        56 |       100 | 
+## ---------------|-----------|-----------|-----------|
+## 
+## 
+\end{verbatim}
+
+　ブースティングを追加したモデルと比較すると正解率は低下しており、63\%となっている。ただし誤分類の種類は異なっている。以前のモデルでは、債務不履行の正解率はそれぞれ42\%と61\%だったが、今回は79\%となった。
+
+\subsection{5.3　分類ルールを理解する}\label{ux5206ux985eux30ebux30fcux30ebux3092ux7406ux89e3ux3059ux308b}
+
+　分類ルールは、ラベル付けされていないインスタンスにクラスを割り当てるif-else形式の論理文として知識を表現する。これらのルールは前件（antecedent）および後件（consequent）として指定され、「～が起きた場合には～が起きる」という文を組み立てる。
+
+　分類ルール学習器は、決定木学習器に非常に近いもので、よく同じようなタスクに使われる。
+
+\begin{itemize}
+\tightlist
+\item
+  機械のハードウェアの故障につながる条件を特定する
+\item
+  顧客をセグメント化するために人々のグループの主な特徴を定義する
+\item
+  株式市場での株価の大幅な下落や上昇の前触れとなる条件を見つけ出す
+\end{itemize}
+
+　一方で、分類ルール学習器には、決定木との明らかな違いもある。決定木は枝を順番にたどりながら決定を行わなければならないが、分類ルール学習器は命題であり、事実を記載した個々の文と同じ様に読むことができる。
+
+\subsubsection{5.3.1　分離統治}\label{ux5206ux96e2ux7d71ux6cbb}
+
+　分類ルールアルゴリズムは、\textbf{分離統治}（separate and
+conquer）というヒューリスティクスを利用する。このプロセスでは、訓練データのサブセットをカバーするルールを特定し、このサブセットを残りのデータから切り離す。ルールを追加してはサブセットを切り離すという作業を、データセット全体がカバーされ、残っているインスタンスがなくなるまで繰り返す。
+
+\subsubsection{5.3.2　１Rアルゴリズム}\label{rux30a2ux30ebux30b4ux30eaux30baux30e0}
+
+　ZeroRという学習器の存在する。ZeroRは、特徴量を考慮せず、ルールを全く学習しない分類ルール学習器である。ラベル付けされていないデータごとに、その特徴量の値にかかわらず、最も共通するクラスを予測する。現実的な用途はほとんどないが、他のより高度な分類ルール学習器のベースラインとなる。
+
+　1Rアルゴリズム（1R
+algorithm）は、ルールを1つ選択することでZeroRを改善したもので、One
+RuleまたはOneRとも呼ばれる。これでも単純すぎるように思えるかもしれないが、思ったよりも性能が良い傾向にある。実証調査によれば、現実の多くのタスクにおいて、このアルゴリズムの正解率がはるかに高度なアルゴリズムの正解率に匹敵することがある。
+
+　次の表に、1Rアルゴリズムの長所と短所をまとめる。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6556}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3444}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{長所}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{短所}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  理解しやすく読みやすいルールを1つだけ生成する
+\item
+  驚くほど性能が良いことが多い
+\item
+  より複雑なアルゴリズムのベンチマークとして利用できる
+\end{itemize}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  特徴量を１つしか使わない
+\item
+  おそらく単純すぎる \textbar{}
+\end{itemize}
+\end{minipage} \\
+\end{longtable}
+
+\subsubsection{5.3.3　RIPPERアルゴリズム}\label{ripperux30a2ux30ebux30b4ux30eaux30baux30e0}
+
+　初期の分類ルール学習アルゴリズムは、「とにかく遅い」、「ノイズが多いと正解率が低くなりがち」という2つの問題があった。IREP（Incremental
+Reduced Error
+Pruning）アルゴリズムは、事前剪定と事後剪定を組み合わせたもので、ルールを非常に複雑なレベルにまで成長させ、それらを選定してから、データセットのデータを分割するといったものだった。これにより分類ルール学習器の性能向上に貢献したが、決定木の性能には及ばないことが多かった。RIPPER（Repeated
+Incremental Pruning to Produce Error
+Reduction）はIREPのルールの精製方法に改良を加えたもので、決定木と同じかそれ以上の性能を獲得した。
+
+　次の表にRIPPERの長所と短所を示した。記載した長所と短所は決定木のものとだいたい一致している。最大の利点は、蹴って技よりもコストのかからないモデルを構築できる可能性がある。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4649}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5351}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{長所}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{短所}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  理解しやすく読みやすいルールを生成する
+\item
+  大規模でノイズの多いデータセットでも効率的
+\item
+  一般に同等の決定木よりも単純なモデルを生成する
+\end{itemize}
+\end{minipage} & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  常識や専門知識に逆らう感じのルールを生成することがある
+\item
+  数値データの処理には適していない
+\item
+  より複雑なモデルよりも性能が劣ることがある
+\end{itemize}
+\end{minipage} \\
+\end{longtable}
+
+　RIPPERアルゴリズムは、次の３ステップのプロセスがある。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  成長
+\item
+  剪定
+\item
+  最適化
+\end{enumerate}
+
+　成長フェーズでは、分離統治法に基づき、データのサブセットが完全に分類されるか、分割に利用できる特徴量を使い切るまで、ルールに条件を貪欲に追加していく。決定木と同様に、次の分割に使う特徴量は情報利得に基づいて決める。これ以上ルールを具体化してもエントロピーが減らなくなったら、すぐにルールの剪定を開始する。そして終了条件が満たされるまでに手順１と手順２を繰り返す。終了条件が満たされたら、様々なヒューリスティクスを用いて一連のルール全体を最適化する。
+
+\subsubsection{5.3.4　決定木から分類ルールへ}\label{ux6c7aux5b9aux6728ux304bux3089ux5206ux985eux30ebux30fcux30ebux3078}
+
+　分類ルールは決定木からも直接作成できる。葉ノードからルートに向かって枝をさかのぼっていくと、一連の決定が可能となる。これらの決定は１つのルールにまとめることができる。
+
+\begin{quote}
+\mbox{}%
+\paragraph{TIPS}\label{sec-tips}
+
+C50パッケージのC5.0関数を使ってモデル訓練する場合は、rules = TRUE
+を指定すると、モデルの構築に分類ルールが使われる
+\end{quote}
+
+\end{document}
