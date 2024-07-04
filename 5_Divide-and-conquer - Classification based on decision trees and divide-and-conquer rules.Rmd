@@ -1,8 +1,6 @@
 ---
 title: "Divide-and-conquer - Classification based on decision trees and divide-and-conquer
   rules"
-output:
-  html_notebook: default
 ---
 
 # 第５章
